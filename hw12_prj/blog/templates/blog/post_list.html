@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+     <h1>Blog</h1>
+    <a href="{% url 'post_create' %}">새 게시글 작성</a>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="이미지" style="max-width: 200px;">
+            {% endif %}
+            {% if post.file %}
+            <a href="{{ post.file.url }}">첨부파일 다운로드</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
